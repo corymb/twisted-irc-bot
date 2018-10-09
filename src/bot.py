@@ -1,5 +1,6 @@
 from collections import deque
 from datetime import datetime
+from random import random
 
 from twisted.python import log
 
@@ -27,6 +28,9 @@ class Bot:
         if text.islower():
             return formatted_text.lstrip() + c.AESTHETIC_STRING
         return formatted_text.lstrip() + c.AESTHETIC_STRING.upper()
+
+    def command_probability(self, text):
+        return 'Probability that {0}: {1:.2f}'.format(text.strip(), random())
 
     # Utils:
     def write_message_to_file(self, message, target=c.QUOTE_FILE_LOCATION):
