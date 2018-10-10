@@ -30,7 +30,7 @@ class Bot:
         return formatted_text.lstrip() + c.AESTHETIC_STRING.upper()
 
     def command_probability(self, text):
-        return 'Probability that {0}: {1:.2f}'.format(text.strip(), random())
+        return c.PROBABILITY_STRING.format(text.strip(), random())
 
     # Utils:
     def write_message_to_file(self, message, target=c.QUOTE_FILE_LOCATION):

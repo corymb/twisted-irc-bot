@@ -1,6 +1,4 @@
-import sys
-
-from twisted.internet import defer, reactor, protocol
+from twisted.internet import defer, protocol
 from twisted.python import log
 from twisted.words.protocols import irc
 
@@ -55,16 +53,3 @@ class IRCBotFactory(protocol.ClientFactory):
     def __init__(self):
         self.channel = c.CHANNEL
         self.bot = Bot()
-
-
-if __name__ == '__main__':
-    # Logging:
-    observer = log.FileLogObserver(sys.stdout)
-    observer.start()
-
-    reactor.connectTCP(
-        host=c.IRC_HOST,
-        port=c.IRC_PORT,
-        factory=IRCBotFactory()
-    )
-    reactor.run()
