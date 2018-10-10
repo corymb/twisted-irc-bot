@@ -19,6 +19,11 @@ class IRCProtocol(irc.IRCClient):
     def privmsg(self, user, channel, message):
         return self._message_handler(user, channel, message)
 
+    def kickedFrom(self, channel, kicker, message):
+        log.msg('Got kicked by {}'.format(kicker))
+        self.signedOn()
+
+
     def _message_handler(self, sender, channel, message):
         saved_message = Message(sender=sender, text=message)
         if not saved_message.text.startswith(c.COMMAND_CHARACTER):
